@@ -70,7 +70,7 @@ static atci_status atci_dispatch_general_handler(atci_parse_param *parse_cmd)
     for (i = 0; i < g_atci_registered_table_number; i++) {
         item_table_size = g_atci_general_handler_tables[i].item_table_size;
 
-        if (ret = ATCI_STATUS_OK) {
+        if (ret == ATCI_STATUS_OK) {
             break;
         }
 
@@ -206,9 +206,9 @@ atci_status atci_input_command_handler(uint8_t *cmd_msg, atci_port port)
     parse_cmd.string_ptr = cmd_msg;
     parse_cmd.string_len = strlen((char *)cmd_msg);
 
-    if (parse_cmd.string_ptr[0] == ATCI_CHAR_A || parse_cmd.string_ptr[0] == ATCI_char_a &&
-        parse_cmd.string_ptr[1] == ATCI_CHAR_T || parse_cmd.string_ptr[1] == ATCI_char_t &&
-        parse_cmd.string_ptr[1] == ATCI_CR_C || parse_cmd.string_ptr[1] == ATCI_LF_C|| parse_cmd.string_ptr[1] == '\0') {
+    if ((parse_cmd.string_ptr[0] == ATCI_CHAR_A || parse_cmd.string_ptr[0] == ATCI_char_a) &&
+        (parse_cmd.string_ptr[1] == ATCI_CHAR_T || parse_cmd.string_ptr[1] == ATCI_char_t) &&
+        (parse_cmd.string_ptr[1] == ATCI_CR_C || parse_cmd.string_ptr[1] == ATCI_LF_C|| parse_cmd.string_ptr[1] == '\0')) {
         
         ATCI_SET_OUTPUT_PARAM_STRING(response, "OK", strlen("OK"), port, ATCI_RESPONSE_FLAG_AUTO_APPEND_LF_CR);
         atci_send_response(&response);

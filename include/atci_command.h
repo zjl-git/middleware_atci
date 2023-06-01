@@ -1,5 +1,5 @@
-#ifndef __ATCI_PORTS_H__
-#define __ATCI_PORTS_H__
+#ifndef __ATCI_COMMAND_H__
+#define __ATCI_COMMAND_H__
 
 #ifdef __cplusplus
 extern "C" {

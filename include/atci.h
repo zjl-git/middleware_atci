@@ -20,15 +20,6 @@ typedef enum {
 } atci_status;
 
 typedef enum {
-    ATCI_PORT_BEGIN,
-    ATCI_PORT_UART = ATCI_PORT_BEGIN,
-    ATCI_PORT_USB,
-    ATCI_PORT_BLE,
-    ATCI_PORT_SPP,
-    ATCI_PORT_MAX,
-} atci_port;
-
-typedef enum {
     ATCI_CMD_MODE_READ,                                     /*Read mode command, such as "AT+CMD?".*/
     ATCI_CMD_MODE_ACTIVE,                                   /*Active mode command, such as "AT+CMD".*/
     ATCI_CMD_MODE_EXECUTION,                                /*Execute mode command, such as "AT+CMD=<op>".*/
@@ -114,6 +105,8 @@ typedef struct {
 } atci_ctrl;
 
 extern atci_ctrl g_atci_ctrl;
+
+void atci_send_msg(atci_general_msg *msg);
 
 void atci_receive_callback(atci_port port, uint8_t *data, uint16_t data_len, uint8_t from_isr);
 

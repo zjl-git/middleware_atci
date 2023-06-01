@@ -4,6 +4,11 @@
 
 atci_ctrl g_atci_ctrl;
 
+void atci_send_msg(atci_general_msg *msg)
+{
+    atci_ports_queue_send(g_atci_ctrl.msg_queue, (void *)msg, false);
+}
+
 static void atci_register_msg_handler(atci_msg_id msg_id, atci_general_msg_handler hdl)
 {
     if (msg_id >= ATCI_MSG_ID_MAX) {
@@ -74,4 +79,9 @@ void atci_init(void)
     atci_register_msg_handler(ATCI_MSG_ID_MUX_DATA_READY, atci_handle_input_data);
     atci_register_msg_handler(ATCI_MSG_ID_SEND_RSP_NOTIFY, atci_handle_output_data);
     atci_register_msg_handler(ATCI_MSG_ID_SEND_URC_NOTIFY, atci_handle_output_data);
+}
+
+void atci_register_handler(atci_cmd_handler_item *handler_table, uint32_t handler_number)
+{
+    
 }

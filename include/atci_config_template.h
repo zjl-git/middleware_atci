@@ -1,5 +1,5 @@
-#ifndef __ATCI_CONFIG_H__
-#define __ATCI_CONFIG_H__
+#ifndef __ATCI_CONFIG_H_TEMPLATE__
+#define __ATCI_CONFIG_H_TEMPLATE__
 
 #ifdef __cplusplus
 extern "C" {
